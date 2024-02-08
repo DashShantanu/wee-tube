@@ -10,8 +10,12 @@ const Feed = () => {
 
 
     useEffect(() => {
-        fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-            .then((data) => setVideos(data.items));
+        try {
+            fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
+                .then((data) => setVideos(data.items));
+        } catch (error) {
+            console.log(error);
+        }
 
     }, [selectedCategory]);
 
